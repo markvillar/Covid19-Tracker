@@ -18,6 +18,7 @@
 		4D96EA33242E0A8900FFBD00 /* GlobalSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA32242E0A8900FFBD00 /* GlobalSummary.swift */; };
 		4D96EA35242E0BDC00FFBD00 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA34242E0BDC00FFBD00 /* Country.swift */; };
 		4D96EA37242E11C900FFBD00 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA36242E11C900FFBD00 /* DashboardView.swift */; };
+		4D96EA39242E478C00FFBD00 /* AnimatedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA38242E478C00FFBD00 /* AnimatedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4D96EA32242E0A8900FFBD00 /* GlobalSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalSummary.swift; sourceTree = "<group>"; };
 		4D96EA34242E0BDC00FFBD00 /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
 		4D96EA36242E11C900FFBD00 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		4D96EA38242E478C00FFBD00 /* AnimatedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				4D96EA2E242E052600FFBD00 /* NetworkCall.swift */,
+				4D96EA38242E478C00FFBD00 /* AnimatedLabel.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -189,6 +192,7 @@
 				4D96EA33242E0A8900FFBD00 /* GlobalSummary.swift in Sources */,
 				4D96EA13242E00D900FFBD00 /* AppDelegate.swift in Sources */,
 				4D96EA37242E11C900FFBD00 /* DashboardView.swift in Sources */,
+				4D96EA39242E478C00FFBD00 /* AnimatedLabel.swift in Sources */,
 				4D96EA35242E0BDC00FFBD00 /* Country.swift in Sources */,
 				4D96EA15242E00D900FFBD00 /* SceneDelegate.swift in Sources */,
 				4D96EA31242E07DD00FFBD00 /* Summary.swift in Sources */,

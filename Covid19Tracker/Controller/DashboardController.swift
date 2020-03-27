@@ -30,9 +30,9 @@ class DashboardController: UIViewController {
         network.getCases { country in
             
             DispatchQueue.main.async {
-                dashboardView.confirmedLabel.text = "\(country.confirmed.value)"
-                dashboardView.recoveredLabel.text = "\(country.recovered.value)"
-                dashboardView.deathsLabel.text = "\(country.deaths.value)"
+                dashboardView.confirmedLabel.countFromZero(to: Float(country.confirmed.value), duration: .strolling)
+                dashboardView.recoveredLabel.countFromZero(to: Float(country.recovered.value), duration: .brisk)
+                dashboardView.deathsLabel.countFromZero(to: Float(country.deaths.value), duration: .brisk)
             }
             
         }

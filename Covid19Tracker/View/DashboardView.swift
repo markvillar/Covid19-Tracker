@@ -20,24 +20,24 @@ class DashboardView: UIView {
         return stackView
     }()
     
-    let confirmedLabel: UILabel = {
-        let textLabel = UILabel()
+    let confirmedLabel: AnimatedLabel = {
+        let textLabel = AnimatedLabel()
         textLabel.textColor = .orange
         textLabel.text = "0"
         textLabel.font = UIFont.boldSystemFont(ofSize: 40)
         return textLabel
     }()
     
-    let recoveredLabel: UILabel = {
-        let textLabel = UILabel()
+    let recoveredLabel: AnimatedLabel = {
+        let textLabel = AnimatedLabel()
         textLabel.textColor = .green
         textLabel.text = "0"
         textLabel.font = UIFont.boldSystemFont(ofSize: 40)
         return textLabel
     }()
     
-    let deathsLabel: UILabel = {
-        let textLabel = UILabel()
+    let deathsLabel: AnimatedLabel = {
+        let textLabel = AnimatedLabel()
         textLabel.textColor = .red
         textLabel.text = "0"
         textLabel.font = UIFont.boldSystemFont(ofSize: 40)
