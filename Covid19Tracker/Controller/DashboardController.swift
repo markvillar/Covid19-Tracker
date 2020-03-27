@@ -22,8 +22,31 @@ class DashboardController: UIViewController {
         setupView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        resetCounters()
+    }
     fileprivate func setupView() {
         navigationItem.title = "Covid-19 Global Summary"
+        
+    }
+    
+    fileprivate func resetCounters() {
+        guard let dashboardView = view as? DashboardView else { return }
+        
+        dashboardView.confirmedLabel.text = "0"
+        dashboardView.recoveredLabel.text = "0"
+        dashboardView.deathsLabel.text = "0"
+    }
+    
+    @objc func getData() {
+        
+        resetCounters()
         
         guard let dashboardView = view as? DashboardView else { return }
         
