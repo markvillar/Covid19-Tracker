@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D64B43A24309EE800846A71 /* StackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D64B43924309EE800846A71 /* StackViewExtensions.swift */; };
 		4D96EA13242E00D900FFBD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA12242E00D900FFBD00 /* AppDelegate.swift */; };
 		4D96EA15242E00D900FFBD00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA14242E00D900FFBD00 /* SceneDelegate.swift */; };
 		4D96EA17242E00D900FFBD00 /* DashboardController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA16242E00D900FFBD00 /* DashboardController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D64B43924309EE800846A71 /* StackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewExtensions.swift; sourceTree = "<group>"; };
 		4D96EA0F242E00D900FFBD00 /* Covid19Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covid19Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D96EA12242E00D900FFBD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4D96EA14242E00D900FFBD00 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				4D96EA2E242E052600FFBD00 /* NetworkCall.swift */,
 				4D96EA38242E478C00FFBD00 /* AnimatedLabel.swift */,
+				4D64B43924309EE800846A71 /* StackViewExtensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				4D96EA2A242E036C00FFBD00 /* TabBarController.swift in Sources */,
 				4D96EA33242E0A8900FFBD00 /* GlobalSummary.swift in Sources */,
 				4D96EA13242E00D900FFBD00 /* AppDelegate.swift in Sources */,
+				4D64B43A24309EE800846A71 /* StackViewExtensions.swift in Sources */,
 				4D96EA37242E11C900FFBD00 /* DashboardView.swift in Sources */,
 				4D96EA39242E478C00FFBD00 /* AnimatedLabel.swift in Sources */,
 				4D96EA35242E0BDC00FFBD00 /* Country.swift in Sources */,

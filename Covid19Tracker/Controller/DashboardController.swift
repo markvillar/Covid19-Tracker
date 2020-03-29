@@ -11,6 +11,7 @@ import UIKit
 class DashboardController: UIViewController {
     
     let network = NetworkCall()
+    let refreshControl = UIRefreshControl()
     
     override func loadView() {
         super.loadView()
@@ -20,6 +21,7 @@ class DashboardController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        setupRefreshControls()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,9 +33,18 @@ class DashboardController: UIViewController {
         super.viewWillDisappear(animated)
         resetCounters()
     }
-    fileprivate func setupView() {
-        navigationItem.title = "Covid-19 Global Summary"
+    
+    fileprivate func setupRefreshControls() {
+        refreshControl.addTarget(self, action: #selector(getData), for: .valueChanged)
+        refreshControl.attributedTitle = NSAttributedString(string: "Fetchin Data ...", attributes: nil)
         
+        guard let dashboardView = view as? DashboardView else { return }
+        dashboardView.scrollView.refreshControl = refreshControl
+    }
+    
+    fileprivate func setupView() {
+        navigationItem.title = "United Kingdom"
+        navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     fileprivate func resetCounters() {
@@ -50,12 +61,16 @@ class DashboardController: UIViewController {
         
         guard let dashboardView = view as? DashboardView else { return }
         
-        network.getCases { country in
+        let deadline = DispatchTime.now() + .milliseconds(500)
+        
+        network.getCases { [weak self] country in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: deadline) {
                 dashboardView.confirmedLabel.countFromZero(to: Float(country.confirmed.value), duration: .brisk)
                 dashboardView.recoveredLabel.countFromZero(to: Float(country.recovered.value), duration: .brisk)
                 dashboardView.deathsLabel.countFromZero(to: Float(country.deaths.value), duration: .brisk)
+                
+                self?.refreshControl.endRefreshing()
             }
             
         }

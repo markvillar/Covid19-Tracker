@@ -10,21 +10,48 @@ import UIKit
 
 class DashboardView: UIView {
     
-    let stackView: UIStackView = {
+    let scrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        //scrollView.bounces = true
+        //scrollView.alwaysBounceVertical = true
+        //scrollView.isScrollEnabled = true
+        //scrollView.showsVerticalScrollIndicator = true
+        //scrollView.autoresizingMask = .flexibleHeight
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+    
+    let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.alignment = .center
+        stackView.spacing = 20
+        stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
+    }()
+    
+    let confirmedTextLabel: UILabel = {
+        let textLabel = UILabel()
+        textLabel.textColor = .orange
+        textLabel.text = "Confirmed Cases"
+        textLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        return textLabel
     }()
     
     let confirmedLabel: AnimatedLabel = {
         let textLabel = AnimatedLabel()
         textLabel.textColor = .orange
         textLabel.text = "0"
-        textLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 60)
+        return textLabel
+    }()
+    
+    let recoveredTextLabel: UILabel = {
+        let textLabel = UILabel()
+        textLabel.textColor = .green
+        textLabel.text = "Recovered"
+        textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
     }()
     
@@ -32,7 +59,15 @@ class DashboardView: UIView {
         let textLabel = AnimatedLabel()
         textLabel.textColor = .green
         textLabel.text = "0"
-        textLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 60)
+        return textLabel
+    }()
+    
+    let deathsTextLabel: UILabel = {
+        let textLabel = UILabel()
+        textLabel.textColor = .red
+        textLabel.text = "Deaths"
+        textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
     }()
     
@@ -40,7 +75,7 @@ class DashboardView: UIView {
         let textLabel = AnimatedLabel()
         textLabel.textColor = .red
         textLabel.text = "0"
-        textLabel.font = UIFont.boldSystemFont(ofSize: 40)
+        textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
     }()
     
@@ -53,23 +88,68 @@ class DashboardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    fileprivate func wrapInStackView(labels:UILabel..., colour:UIColor? = nil) -> UIStackView {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .center
+        stackView.distribution = .fillEqually
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        if colour != nil {
+            stackView.addBackground(color: colour!)
+        }
+        
+        for label in labels {
+            stackView.addArrangedSubview(label)
+        }
+        
+        return stackView
+    }
+    
+    fileprivate func setupScrollView() {
+        
+        addSubview(scrollView)
+        
+        scrollView.contentSize = CGSize(width: frame.width, height: frame.height)
+        
+        scrollView.backgroundColor = .systemBackground
+        
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor)
+        ])
+        
+    }
+    
     fileprivate func setupView() {
         
         backgroundColor = .systemBackground
-        addSubview(stackView)
         
-        let subViews = [confirmedLabel, recoveredLabel, deathsLabel]
+        setupScrollView()
         
+        scrollView.addSubview(mainStackView)
+
+        //Create all labels
+        let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel, colour: .systemYellow)
+        let recoveredCases = wrapInStackView(labels: recoveredTextLabel, recoveredLabel, colour: .systemGreen)
+        let deathCases = wrapInStackView(labels: deathsTextLabel, deathsLabel, colour: .systemRed)
+        let subViews = [confirmedCases, recoveredCases, deathCases]
+
         for subView in subViews {
-            stackView.addArrangedSubview(subView)
+            mainStackView.addArrangedSubview(subView)
         }
         
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30),
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            mainStackView.widthAnchor.constraint(equalToConstant: frame.width),
+            mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
+        
+        
     }
     
     
