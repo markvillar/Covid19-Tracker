@@ -143,12 +143,9 @@ class DashboardView: UIView {
         
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30),
-            mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            mainStackView.widthAnchor.constraint(equalToConstant: frame.width),
             mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
-        
         
     }
     
