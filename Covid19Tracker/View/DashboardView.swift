@@ -33,7 +33,7 @@ class DashboardView: UIView {
     
     let confirmedTextLabel: UILabel = {
         let textLabel = UILabel()
-        textLabel.textColor = .orange
+        textLabel.textColor = .systemYellow
         textLabel.text = "Confirmed Cases"
         textLabel.font = UIFont.boldSystemFont(ofSize: 40)
         return textLabel
@@ -41,7 +41,7 @@ class DashboardView: UIView {
     
     let confirmedLabel: AnimatedLabel = {
         let textLabel = AnimatedLabel()
-        textLabel.textColor = .orange
+        textLabel.textColor = .systemYellow
         textLabel.text = "0"
         textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
@@ -49,7 +49,7 @@ class DashboardView: UIView {
     
     let recoveredTextLabel: UILabel = {
         let textLabel = UILabel()
-        textLabel.textColor = .green
+        textLabel.textColor = .systemGreen
         textLabel.text = "Recovered"
         textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
@@ -57,7 +57,7 @@ class DashboardView: UIView {
     
     let recoveredLabel: AnimatedLabel = {
         let textLabel = AnimatedLabel()
-        textLabel.textColor = .green
+        textLabel.textColor = .systemGreen
         textLabel.text = "0"
         textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
@@ -65,7 +65,7 @@ class DashboardView: UIView {
     
     let deathsTextLabel: UILabel = {
         let textLabel = UILabel()
-        textLabel.textColor = .red
+        textLabel.textColor = .systemRed
         textLabel.text = "Deaths"
         textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
@@ -73,7 +73,7 @@ class DashboardView: UIView {
     
     let deathsLabel: AnimatedLabel = {
         let textLabel = AnimatedLabel()
-        textLabel.textColor = .red
+        textLabel.textColor = .systemRed
         textLabel.text = "0"
         textLabel.font = UIFont.boldSystemFont(ofSize: 60)
         return textLabel
@@ -132,9 +132,9 @@ class DashboardView: UIView {
         scrollView.addSubview(mainStackView)
 
         //Create all labels
-        let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel, colour: .systemYellow)
-        let recoveredCases = wrapInStackView(labels: recoveredTextLabel, recoveredLabel, colour: .systemGreen)
-        let deathCases = wrapInStackView(labels: deathsTextLabel, deathsLabel, colour: .systemRed)
+        let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel)
+        let recoveredCases = wrapInStackView(labels: recoveredTextLabel, recoveredLabel)
+        let deathCases = wrapInStackView(labels: deathsTextLabel, deathsLabel)
         let subViews = [confirmedCases, recoveredCases, deathCases]
 
         for subView in subViews {
