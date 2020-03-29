@@ -21,12 +21,6 @@ class DashboardView: UIView {
         return scrollView
     }()
     
-    let scrollViewContentView: UIView = {
-        let contentView = UIView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        return contentView
-    }()
-    
     let mainStackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
@@ -132,8 +126,7 @@ class DashboardView: UIView {
         
         setupScrollView()
         
-        scrollView.addSubview(scrollViewContentView)
-        scrollViewContentView.addSubview(mainStackView)
+        scrollView.addSubview(mainStackView)
 
         //Create all labels
         let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel, colour: .yellow)
@@ -144,22 +137,12 @@ class DashboardView: UIView {
         for subView in subViews {
             mainStackView.addArrangedSubview(subView)
         }
-
+        
         NSLayoutConstraint.activate([
-            scrollViewContentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            scrollViewContentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            scrollViewContentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            //scrollViewContentView.widthAnchor.constraint(equalToConstant: frame.width),
-            scrollViewContentView.heightAnchor.constraint(greaterThanOrEqualToConstant: frame.height)
-        ])
-
-        NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: scrollViewContentView.topAnchor, constant: 30),
-            //mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30),
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
             mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            mainStackView.centerYAnchor.constraint(equalTo: scrollView.centerYAnchor),
-            //mainStackView.widthAnchor.constraint(equalToConstant: frame.width),
-            //mainStackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            mainStackView.widthAnchor.constraint(equalToConstant: frame.width),
             mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
         
