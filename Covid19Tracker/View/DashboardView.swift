@@ -88,13 +88,16 @@ class DashboardView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    fileprivate func wrapInStackView(labels:UILabel..., colour:UIColor) -> UIStackView {
+    fileprivate func wrapInStackView(labels:UILabel..., colour:UIColor? = nil) -> UIStackView {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.alignment = .center
         stackView.distribution = .fillEqually
-        stackView.addBackground(color: colour)
         stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        if colour != nil {
+            stackView.addBackground(color: colour!)
+        }
         
         for label in labels {
             stackView.addArrangedSubview(label)
@@ -129,7 +132,7 @@ class DashboardView: UIView {
         scrollView.addSubview(mainStackView)
 
         //Create all labels
-        let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel, colour: .yellow)
+        let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel, colour: .systemYellow)
         let recoveredCases = wrapInStackView(labels: recoveredTextLabel, recoveredLabel, colour: .systemGreen)
         let deathCases = wrapInStackView(labels: deathsTextLabel, deathsLabel, colour: .systemRed)
         let subViews = [confirmedCases, recoveredCases, deathCases]
