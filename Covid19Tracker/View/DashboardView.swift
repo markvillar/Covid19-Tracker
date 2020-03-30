@@ -16,7 +16,7 @@ class DashboardView: UIView {
         //scrollView.alwaysBounceVertical = true
         //scrollView.isScrollEnabled = true
         //scrollView.showsVerticalScrollIndicator = true
-        //scrollView.autoresizingMask = .flexibleHeight
+        scrollView.autoresizingMask = .flexibleHeight
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         return scrollView
     }()
@@ -84,6 +84,8 @@ class DashboardView: UIView {
         textLabel.textColor = .black
         textLabel.text = "Last Updated: Never"
         textLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        textLabel.textColor = .gray
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
         return textLabel
     }()
     
@@ -118,10 +120,6 @@ class DashboardView: UIView {
         
         addSubview(scrollView)
         
-        scrollView.contentSize = CGSize(width: frame.width, height: frame.height)
-        
-        scrollView.backgroundColor = .systemBackground
-        
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor),
@@ -138,33 +136,26 @@ class DashboardView: UIView {
         setupScrollView()
         
         scrollView.addSubview(mainStackView)
+        scrollView.addSubview(lastUpdatedAtLabel)
         
-        
-        let extraLongView = UIView()
-        
-        extraLongView.backgroundColor = .green
-        
-        NSLayoutConstraint.activate([
-            extraLongView.heightAnchor.constraint(equalToConstant: 200),
-            extraLongView.widthAnchor.constraint(equalToConstant: frame.width)
-        ])
-
-
         //Create all labels
         let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel)
         let recoveredCases = wrapInStackView(labels: recoveredTextLabel, recoveredLabel)
         let deathCases = wrapInStackView(labels: deathsTextLabel, deathsLabel)
-        let updatedAt = wrapInStackView(labels: lastUpdatedAtLabel)
-        let subViews = [confirmedCases, recoveredCases, deathCases, updatedAt]
-
+        let subViews = [confirmedCases, recoveredCases, deathCases]
+        
         for subView in subViews {
             mainStackView.addArrangedSubview(subView)
         }
         
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 30),
+            mainStackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 50),
+            mainStackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 10),
             mainStackView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            mainStackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            
+            lastUpdatedAtLabel.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 20),
+            lastUpdatedAtLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            lastUpdatedAtLabel.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
         
     }
