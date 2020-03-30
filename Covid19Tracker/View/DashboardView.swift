@@ -79,6 +79,14 @@ class DashboardView: UIView {
         return textLabel
     }()
     
+    var lastUpdatedAtLabel: UILabel = {
+        let textLabel = UILabel()
+        textLabel.textColor = .black
+        textLabel.text = "Last Updated: Never"
+        textLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        return textLabel
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
@@ -130,12 +138,24 @@ class DashboardView: UIView {
         setupScrollView()
         
         scrollView.addSubview(mainStackView)
+        
+        
+        let extraLongView = UIView()
+        
+        extraLongView.backgroundColor = .green
+        
+        NSLayoutConstraint.activate([
+            extraLongView.heightAnchor.constraint(equalToConstant: 200),
+            extraLongView.widthAnchor.constraint(equalToConstant: frame.width)
+        ])
+
 
         //Create all labels
         let confirmedCases = wrapInStackView(labels: confirmedTextLabel, confirmedLabel)
         let recoveredCases = wrapInStackView(labels: recoveredTextLabel, recoveredLabel)
         let deathCases = wrapInStackView(labels: deathsTextLabel, deathsLabel)
-        let subViews = [confirmedCases, recoveredCases, deathCases]
+        let updatedAt = wrapInStackView(labels: lastUpdatedAtLabel)
+        let subViews = [confirmedCases, recoveredCases, deathCases, updatedAt]
 
         for subView in subViews {
             mainStackView.addArrangedSubview(subView)

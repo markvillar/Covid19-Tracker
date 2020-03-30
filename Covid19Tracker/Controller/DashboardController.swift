@@ -53,6 +53,26 @@ class DashboardController: UIViewController {
         dashboardView.confirmedLabel.text = "0"
         dashboardView.recoveredLabel.text = "0"
         dashboardView.deathsLabel.text = "0"
+        dashboardView.lastUpdatedAtLabel.text = "Last Updated: Never"
+        
+    }
+    
+    fileprivate func getTime(isoDate: String) -> String {
+        let formattGet = DateFormatter()
+        formattGet.locale = Locale.current
+        formattGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        
+        let localFormatter = DateFormatter()
+        localFormatter.locale = Locale.current
+        localFormatter.dateFormat = "EEEE, d MMM yyyy HH:mm:ss"
+        
+        if let dateObject = formattGet.date(from: isoDate) {
+            let dateObjectFinalForm = localFormatter.string(from: dateObject)
+            return dateObjectFinalForm
+        } else {
+            return "Unknown"
+        }
+        
     }
     
     @objc func getData() {
@@ -69,6 +89,13 @@ class DashboardController: UIViewController {
                 dashboardView.confirmedLabel.countFromZero(to: Float(country.confirmed.value), duration: .brisk)
                 dashboardView.recoveredLabel.countFromZero(to: Float(country.recovered.value), duration: .brisk)
                 dashboardView.deathsLabel.countFromZero(to: Float(country.deaths.value), duration: .brisk)
+                
+                guard let updatedTime = self?.getTime(isoDate: country.lastUpdate) else {
+                    dashboardView.lastUpdatedAtLabel.text = "Last Updated: Unknown"
+                    return
+                }
+                
+                dashboardView.lastUpdatedAtLabel.text = "Last Updated: \(String(describing: updatedTime))"
                 
                 self?.refreshControl.endRefreshing()
             }
