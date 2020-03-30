@@ -22,7 +22,17 @@ class DashboardController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupRefreshControls()
+        setupBarButton()
         getData()
+    }
+    
+    @objc func fakefunc() {
+        print("Change Country")
+    }
+    
+    fileprivate func setupBarButton() {
+        let changeCountry = UIBarButtonItem(title: "Select", style: .plain, target: self, action: #selector(fakefunc))
+        navigationItem.rightBarButtonItem = changeCountry
     }
     
     fileprivate func setupRefreshControls() {
