@@ -50,7 +50,7 @@ class DashboardController: UIViewController {
     
     fileprivate func getTime(isoDate: String) -> String {
         let formattGet = DateFormatter()
-        formattGet.locale = Locale.current
+        formattGet.locale = Locale(identifier: "en_US_POSIX")
         formattGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
         
         let localFormatter = DateFormatter()
