@@ -16,6 +16,10 @@ class NetworkCall: NSObject {
     
     func getCases(completion: @escaping (Country)->()) {
         
+        let decoder = JSONDecoder()
+        //decoder.dateDecodingStrategy = .iso8601
+        //decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
         let url = "https://covid19.mathdro.id/api/countries/GB"
         
         let urlRequest = URL(string: url)
@@ -31,7 +35,7 @@ class NetworkCall: NSObject {
             guard let data = data else { return }
             
             do {
-                let country = try JSONDecoder().decode(Country.self, from: data)
+                let country = try decoder.decode(Country.self, from: data)
                 
                 completion(country)
                 
