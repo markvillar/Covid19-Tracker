@@ -12,8 +12,30 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        setUpTabBar()
+        setUpViewControllers()
+    }
+    
+    var homeScreenController: UINavigationController = {
+        let dc = DashboardController()
+        var hc = UINavigationController(rootViewController: dc)
+        
+        hc.tabBarItem.title = "Home"
+        hc.tabBarItem.image = UIImage(systemName: "house.fill")
+        return hc
+    }()
+    
+    fileprivate func setUpTabBar() {
+        tabBar.isTranslucent = true
+        tabBar.isOpaque = true
+    }
+    
+    //MARK: RootViewControllers
+    fileprivate func setUpViewControllers() {
+        
+        let viewControllerList = [homeScreenController]
+        
+        setViewControllers(viewControllerList, animated: true)
     }
     
 
