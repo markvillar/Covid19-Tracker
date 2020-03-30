@@ -22,16 +22,7 @@ class DashboardController: UIViewController {
         super.viewDidLoad()
         setupView()
         setupRefreshControls()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         getData()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        resetCounters()
     }
     
     fileprivate func setupRefreshControls() {

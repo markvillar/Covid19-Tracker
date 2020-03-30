@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D244B622432758E00A1A4EE /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D244B612432758E00A1A4EE /* AboutController.swift */; };
+		4D244B64243275B400A1A4EE /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D244B63243275B400A1A4EE /* AboutView.swift */; };
 		4D64B43A24309EE800846A71 /* StackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D64B43924309EE800846A71 /* StackViewExtensions.swift */; };
 		4D96EA13242E00D900FFBD00 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA12242E00D900FFBD00 /* AppDelegate.swift */; };
 		4D96EA15242E00D900FFBD00 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D96EA14242E00D900FFBD00 /* SceneDelegate.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D244B612432758E00A1A4EE /* AboutController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		4D244B63243275B400A1A4EE /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		4D64B43924309EE800846A71 /* StackViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackViewExtensions.swift; sourceTree = "<group>"; };
 		4D96EA0F242E00D900FFBD00 /* Covid19Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Covid19Tracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D96EA12242E00D900FFBD00 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			children = (
 				4D96EA29242E036C00FFBD00 /* TabBarController.swift */,
 				4D96EA16242E00D900FFBD00 /* DashboardController.swift */,
+				4D244B612432758E00A1A4EE /* AboutController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				4D96EA36242E11C900FFBD00 /* DashboardView.swift */,
+				4D244B63243275B400A1A4EE /* AboutView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,6 +200,7 @@
 				4D96EA2A242E036C00FFBD00 /* TabBarController.swift in Sources */,
 				4D96EA33242E0A8900FFBD00 /* GlobalSummary.swift in Sources */,
 				4D96EA13242E00D900FFBD00 /* AppDelegate.swift in Sources */,
+				4D244B64243275B400A1A4EE /* AboutView.swift in Sources */,
 				4D64B43A24309EE800846A71 /* StackViewExtensions.swift in Sources */,
 				4D96EA37242E11C900FFBD00 /* DashboardView.swift in Sources */,
 				4D96EA39242E478C00FFBD00 /* AnimatedLabel.swift in Sources */,
@@ -201,6 +208,7 @@
 				4D96EA15242E00D900FFBD00 /* SceneDelegate.swift in Sources */,
 				4D96EA31242E07DD00FFBD00 /* Summary.swift in Sources */,
 				4D96EA2F242E052600FFBD00 /* NetworkCall.swift in Sources */,
+				4D244B622432758E00A1A4EE /* AboutController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

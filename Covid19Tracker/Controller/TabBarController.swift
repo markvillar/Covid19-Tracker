@@ -18,11 +18,22 @@ class TabBarController: UITabBarController {
     
     var homeScreenController: UINavigationController = {
         let dc = DashboardController()
-        var hc = UINavigationController(rootViewController: dc)
+        var nc = UINavigationController(rootViewController: dc)
         
-        hc.tabBarItem.title = "Home"
-        hc.tabBarItem.image = UIImage(systemName: "house.fill")
-        return hc
+        nc.tabBarItem.title = "Home"
+        nc.tabBarItem.image = UIImage(systemName: "house")
+        nc.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
+        return nc
+    }()
+    
+    var aboutScreenController: UINavigationController = {
+        let dc = AboutController()
+        var nc = UINavigationController(rootViewController: dc)
+        
+        nc.tabBarItem.title = "About"
+        nc.tabBarItem.image = UIImage(systemName: "person")
+        nc.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+        return nc
     }()
     
     fileprivate func setUpTabBar() {
@@ -33,7 +44,7 @@ class TabBarController: UITabBarController {
     //MARK: RootViewControllers
     fileprivate func setUpViewControllers() {
         
-        let viewControllerList = [homeScreenController]
+        let viewControllerList = [homeScreenController, aboutScreenController]
         
         setViewControllers(viewControllerList, animated: true)
     }
