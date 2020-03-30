@@ -44,7 +44,6 @@ class DashboardController: UIViewController {
         dashboardView.confirmedLabel.text = "0"
         dashboardView.recoveredLabel.text = "0"
         dashboardView.deathsLabel.text = "0"
-        dashboardView.lastUpdatedAtLabel.text = "Last Updated: Never"
         
     }
     
